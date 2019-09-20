@@ -7,14 +7,16 @@ export default function SearchForm(props) {
 
   const [ searchResults, setSearchResults ] = useState([]);
 
-  // useEffect(() => {
-  //   const results = props.data.filter(character =>
-  //     character.toLowerCase().includes(searchTerm)
-  //   );
-
-  //   setSearchResults(results);
-  // }, [searchTerm])
-
+  useEffect(() => {
+    const names = props.data.map(item => item.name)
+    
+    const results = names.filter(character =>
+      character.toLowerCase().includes(searchTerm)
+    );
+    console.log(results)
+    setSearchResults(results);
+  }, [searchTerm]);
+  // The handleChange method takes the event object as the arguement and sets the current value of the form to the searchTerm state using setSearchTerm
   const handleChange = event => {
     // console.log(event.target.value)
     setSearchTerm(event.target.value);
@@ -22,6 +24,13 @@ export default function SearchForm(props) {
  
   return (
     <section className="search-form">
+      <div className="character-list">
+        <ul>
+          {searchResults.map(character => (
+            <li>{character}</li>
+          ))}
+        </ul>
+      </div>
      <ReactForm>
         <FormGroup>
               <Label for="exampleSearch">Search</Label>
