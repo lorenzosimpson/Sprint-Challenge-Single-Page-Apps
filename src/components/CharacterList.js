@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import CharacterCard from "./CharacterCard";
+import SearchForm from "./SearchForm";
 
 
 export default function CharacterList() {
@@ -12,9 +13,9 @@ export default function CharacterList() {
     axios
     .get('https://rickandmortyapi.com/api/character/')
     .then(response => {
-      const characters = response.data.results;
-      console.log(characters)
-      setCharacters(characters)
+      const data = response.data.results;
+      console.log(data)
+      setCharacters(data)
     })
     .catch(error => {
       console.log('The API returned an error:', error)
@@ -23,6 +24,7 @@ export default function CharacterList() {
 
   return (
     <section className="character-list">
+      <SearchForm data={characters}/>
       {characters.map(character => {
         return (
           <CharacterCard 
