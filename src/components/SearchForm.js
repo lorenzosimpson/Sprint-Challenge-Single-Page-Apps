@@ -16,7 +16,7 @@ export default function SearchForm(props) {
     const results = names.filter(character =>
       character.toLowerCase().includes(searchTerm)
     );
-    console.log(results)
+    
     setSearchResults(results);
   }, [searchTerm]);
   // handleChange method takes the event object as the arguement and sets the current value of the form to the searchTerm state using setSearchTerm
@@ -25,7 +25,7 @@ export default function SearchForm(props) {
     setSearchTerm(event.target.value);
     
   };
- console.log(searchResults)
+
   return (
     <section className="search-form">
       {/* search bar: */}
@@ -45,11 +45,11 @@ export default function SearchForm(props) {
       {/* render the search results */}
       <div className="character-list">
       {
-        searchResults.length===0 ? (
-          <CharacterCard names={names} />
+        searchTerm.length===0 ? (
+          <CharacterCard name={names} />
         ) : (
           <CharacterCard 
-            names={searchResults}
+            name={searchResults}
           />
         )
       }
