@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Button, Form as ReactForm, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Formik } from 'formik';
 import CharacterCard from "./CharacterCard";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from 'react-loader-spinner';
 
 export default function SearchForm(props) {
   const [ searchTerm, setSearchTerm ] = useState('');
@@ -44,17 +46,25 @@ export default function SearchForm(props) {
         </FormGroup>
       </ReactForm>
       {/* render the search results */}
-      <div className="character-list">
       {
-        searchTerm.length===0 ? (
-          <CharacterCard name={names} />
+        names.length===0 ? (
+          <div className='loader'>
+            <h2>Loading character list...</h2>
+            <Loader type="Oval" color="white" height={200} width={200} />
+          </div>
         ) : (
-          <CharacterCard 
+          <div className="character-list">
+        {
+          searchTerm.length===0 ? (
+            <CharacterCard name={names} />
+          ) : (
+            <CharacterCard 
             name={searchResults}
           />
         )
-      }
+        }
       </div>
+        )}
     </section>
   );
 }
