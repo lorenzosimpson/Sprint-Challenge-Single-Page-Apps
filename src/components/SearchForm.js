@@ -19,6 +19,7 @@ export default function SearchForm(props) {
     
     setSearchResults(results);
   }, [searchTerm]);
+  //comments from christina:
   // handleChange method takes the event object as the arguement and sets the current value of the form to the searchTerm state using setSearchTerm
   const handleChange = event => {
     // console.log(event.target.value)
@@ -31,7 +32,7 @@ export default function SearchForm(props) {
       {/* search bar: */}
      <ReactForm> 
         <FormGroup>
-              <Label for="exampleSearch">Search</Label>
+              <Label for="exampleSearch"></Label>
               <Input
                 type="search"
                 name="search"
