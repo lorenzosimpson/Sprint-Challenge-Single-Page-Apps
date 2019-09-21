@@ -50,7 +50,7 @@ export default function SearchForm(props) {
         names.length===0 ? (
           <div className='loader'>
             <h2>Loading character list...</h2>
-            <Loader type="Oval" color="white" height={200} width={200} />
+            <Loader type="Oval" color="black" height={200} width={200} />
           </div>
         ) : (
           <div className="character-list">
