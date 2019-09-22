@@ -16,7 +16,7 @@ export default function SearchForm(props) {
     const characters = props.data.map(item => item)
     
     const results = names.filter(character =>
-      character.toLowerCase().includes(searchTerm)
+      character.toLowerCase().includes(searchTerm.toLowerCase())
     );
     
     setSearchResults(results);
